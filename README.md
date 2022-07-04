@@ -4,8 +4,8 @@
 
 
 <p align="center">
-	<b><i>Este projeto trata da programação de uma função que retorna uma linha
-ler de um descritor de arquivo.
+	<b><i>Este projeto trata da programação de uma função que retorna uma linha ao
+ler de um descritor de arquivo (fd).
 </i></b><br>
 </p>
 
