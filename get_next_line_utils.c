@@ -6,7 +6,7 @@
 /*   By: ferncarv <ferncarv@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:26:21 by ferncarv          #+#    #+#             */
-/*   Updated: 2022/07/04 17:49:54 by ferncarv         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:25:24 by ferncarv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@ char	*ft_strchr(const char *s, int c)
 		s++;
 	}	
 	return ((char *)s);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	len;
-	char	*aux1;
-
-	len = ft_strlen(s1) + 1;
-	aux1 = malloc(len);
-	if (aux1)
-	{
-		ft_strlcpy(aux1, s1, len);
-		return (aux1);
-	}
-	return (NULL);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -75,25 +60,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str[aux1 + aux2] = '\0';
 	return (str);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	aux1;
-    size_t  aux2;
-
-	aux1 = 0;
-    aux2 = 0;
-	while (src[aux2] != '\0')
-        aux2++;
-	if (!dstsize)
-        return (aux2);
-    while (aux1 < (dstsize - 1) && aux1 < dstsize && src[aux1]
-    {
-        dst[aux1] = src[aux1];
-        aux1++;
-    }
-    dst[aux1] = '\0';
-    return (dstsize);
 }
 
