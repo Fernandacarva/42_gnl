@@ -6,11 +6,12 @@
 /*   By: ferncarv <ferncarv@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:26:21 by ferncarv          #+#    #+#             */
-/*   Updated: 2022/07/06 18:25:24 by ferncarv         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:06:52 by ferncarv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -22,26 +23,30 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strchr(const char *s, int c)
 {
+	if (!s)
+		return (0);
 	while (*s != c)
 	{
 		if (!*s)
-			return ((char *) '\0');
+			return (0);
 		s++;
 	}	
-	return ((char *)s);
+	return (1);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t			aux1;
 	size_t			aux2;
 	size_t			sum;
 	char			*str;
 
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+	{	s1 = malloc(1);
+		s1[0] = '\0';
+	}
 	sum = ft_strlen(s1) + ft_strlen(s2) + 1;
 	str = malloc(sum);
 	aux1 = 0;
@@ -59,6 +64,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		aux2++;
 	}
 	str[aux1 + aux2] = '\0';
+	free(s1);
 	return (str);
 }
 
