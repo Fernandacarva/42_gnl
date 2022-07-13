@@ -14,7 +14,3 @@ ler de um descritor de arquivo (fd).
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Fernandacarva/get_next_line?color=d55d92" />
 	<img alt="Code language count" src="https://img.shields.io/github/languages/count/Fernandacarva/get_next_line?color=d55d92" />
 	
-</p>
-<h4 align="center"> 
-	🚧 🚀 Em construção...  🚧
-</h4>
