@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ferncarv <ferncarv@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:36:21 by ferncarv          #+#    #+#             */
-/*   Updated: 2022/07/11 18:11:32 by ferncarv         ###   ########.fr       */
+/*   Updated: 2022/07/11 18:17:59 by ferncarv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*count_line(char *str)
 {
@@ -69,7 +69,7 @@ char	*get_next_line(int fd)
 {
 	int			n_by;
 	char		*buffer;
-	static char	*str;
+	static char	*str[4096];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -78,7 +78,7 @@ char	*get_next_line(int fd)
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (n_by > 0 && ft_strchr(str, '\n') == 0)
+	while (n_by > 0 && ft_strchr(str[fd], '\n') == 0)
 	{
 		n_by = read(fd, buffer, BUFFER_SIZE);
 		if (n_by == -1)
@@ -86,10 +86,10 @@ char	*get_next_line(int fd)
 		if (n_by == -1)
 			return (NULL);
 		buffer[n_by] = '\0';
-		str = ft_strjoin(str, buffer);
+		str[fd] = ft_strjoin(str[fd], buffer);
 	}
 	free(buffer);
-	line = count_line(str);
-	str = get_rest(str);
+	line = count_line(str[fd]);
+	str[fd] = get_rest(str[fd]);
 	return (line);
 }
